@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Asignaturas";
+}
+<style>
+    .buttonOption {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        margin-left: 5px;
+    }
+
+    .principalContainer {
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+
+    .buttonsContainer {
+        display: flex;
+        position: absolute;
+        right: 10%;
+    }
+</style>
+<script src="~/Js/AsignaturaController.js"></script>
+<div id="AsignaturaController" class="container" ng-controller="AsignaturaController" ng-init="Init()">
+    <div class="row">
+        <div class="col-sm-12 d-flex principalContainer">
+            <div class="col-12 text-center">
+                <h4>ASIGNATURAS</h4>
+            </div>
+            <div class="col-auto buttonsContainer">
+                <button class="btn btn-outline-dark buttonOption" ng-click="EditarAsignatura()"><i class="fa-solid fa-edit"></i></button>
+                <button class="btn btn-outline-dark buttonOption" ng-click="AbrirModalAsignatura()"><i class="fa-solid fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <table id="tablaAsignaturas" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Profesor</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="asignaturaModal" tabindex="-1" aria-labelledby="asignaturaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Alumno</h5>
+                </div>
+                <form id="formularioPersona">
+                    <div class="modal-body row">
+                        <input type="hidden" name="Activo" value="" />
+                        <input type="hidden" id="AsignaturaID" name="AsignaturaID" value="" />
+                        <div class="col-12 col-md-6">
+                            <label for="Codigo" class="form-label">Código</label>
+                            <input type="text" class="form-control" id="Codigo" name="Codigo" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="Nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="Nombre" name="Nombre" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="Identificacion" class="form-label">Profesor</label>
+                            <select id="PersonaID" name="PersonaID" class="form-select">
+                                <option ng-repeat="Profesor in Profesores" value="{{Profesor.PersonaID}}">{{Profesor.Nombre}} {{Profesor.Apellido}}</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-md-6 d-grid">
+                            <label for="Activo" class="form-label">Activo</label>
+                            <input class="form-check-input" type="checkbox" value="" id="Activo" ng-click="ActivoAsignatura()" required>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-dark" ng-click="GuardarAsignatura()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

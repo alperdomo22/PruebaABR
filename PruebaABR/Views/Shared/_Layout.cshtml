@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html ng-app="AppPruebaABR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Frameworks/IziToast/css/iziToast.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.css" />
+</head>
+<body>
+    <div class="col-12">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 d-flex">
+                            <a class="navbar-brand">Sinco School</a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link" onclick="CargarPantalla('/Administracion/Profesor')">Profesores</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" onclick="CargarPantalla('/Administracion/Alumno')">Alumnos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" onclick="CargarPantalla('/Administracion/Asignatura')">Asignaturas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" onclick="CargarPantalla('/Administracion/AsignarAsignaturas')">Asignación</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Frameworks/IziToast/js/iziToast.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+    <script src="~/Frameworks/AngularJS/angular.min.js"></script>
+    <script src="https://kit.fontawesome.com/39cf783212.js" crossorigin="anonymous"></script>
+    <script src="~/Js/jquery.serializejson.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.2/underscore-umd-min.js"></script>
+    <script>
+        var PruebaABR = angular.module('AppPruebaABR', []).config(function ($sceDelegateProvider) { });
+        function CargarPantalla(url) {
+            window.location = location.origin + url;
+        }
+    </script>
+    <div class="container body-content h-100">
+        @RenderBody()
+    </div>
+</body>
+</html>

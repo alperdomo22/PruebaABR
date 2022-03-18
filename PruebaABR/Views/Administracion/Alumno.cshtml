@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Alumnos";
+}
+<style>
+    .buttonOption {
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        margin-left: 5px;
+    }
+
+    .principalContainer {
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+
+    .buttonsContainer {
+        display: flex;
+        position: absolute;
+        right: 10%;
+    }
+</style>
+<script src="~/Js/AlumnoController.js"></script>
+<div id="AlumnoController" class="container" ng-controller="AlumnoController" ng-init="Init()">
+    <div class="row">
+        <div class="col-sm-12 d-flex principalContainer">
+            <div class="col-12 text-center">
+                <h4>ALUMNOS</h4>
+            </div>
+            <div class="col-auto buttonsContainer">
+                <button class="btn btn-outline-dark buttonOption" ng-click="EditarAlumno()"><i class="fa-solid fa-edit"></i></button>
+                <button class="btn btn-outline-dark buttonOption" ng-click="EliminarAlumno()"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn btn-outline-dark buttonOption" ng-click="AbrirModalAlumno()"><i class="fa-solid fa-plus"></i></button>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <table id="tablaAlumnos" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Identificacion</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="modal fade" id="alumnoModal" tabindex="-1" aria-labelledby="alumnoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                    <h5 class="modal-title" id="exampleModalLabel">Alumno</h5>
+                </div>
+                <form id="formularioPersona">
+                    <div class="modal-body row">
+                        <input type="hidden" name="Activo" value="" />
+                        <input type="hidden" id="PersonaID" name="PersonaID" value="" />
+                        <div class="col-12 col-md-6">
+                            <label for="Nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="Nombre" name="Nombre" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="Apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="Apellido" name="Apellido" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="Identificacion" class="form-label">Identificación</label>
+                            <input type="text" class="form-control" id="Identificacion" name="Identificacion" required>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <label for="Edad" class="form-label">Edad</label>
+                            <input type="number" class="form-control" id="Edad" name="Edad" min="0" max="150" required>
+                        </div>
+                        <div class="col-6 col-md-3 d-grid">
+                            <label for="Activo" class="form-label">Activo</label>
+                            <input class="form-check-input" type="checkbox" value="" id="Activo" ng-click="ActivoUsuario()" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="Direccion" class="form-label">Dirección</label>
+                            <input type="text" class="form-control" id="Direccion" name="Direccion" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="Telefono" class="form-label">Télefono</label>
+                            <input type="text" class="form-control" id="Telefono" name="Telefono" required>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-outline-dark" ng-click="GuardarAlumno()">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
